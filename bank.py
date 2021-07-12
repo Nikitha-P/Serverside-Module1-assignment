@@ -5,18 +5,17 @@ class Bank():
 
     def withdrawl(self,amount):
         if amount>self.balance:
-            print("No sufficient amount")
+            return "No sufficient amount to withdraw"
         elif amount<0:
-            print("Insufficient funds")
+            return "Amount cannot be negative"
         else:
             self.balance=self.balance-amount
             return self.owner+" account's balance after withdrawing "+str(amount)+" rupees is " +str(self.balance)
 
     def deposit(self,amount):
-        if amount>self.balance:
-            print("No sufficient amount")
-        elif amount<0:
-            print("Insufficient funds")
+        
+        if amount<0:
+            return "Amount can't be negative"
         else:
             self.balance=self.balance+amount
             return self.owner+" account's balance after depositing "+str(amount)+" "+"rupees is " +str(self.balance)
@@ -24,9 +23,10 @@ class Bank():
 
 def main():
     owner=input()
-    balance=int(input())
+    balance=0.0
     obj=Bank(owner,balance)
-    
+    #print(obj)
+    print(f"Account holdername {obj.owner} and balance {obj.balance}")
     n=int(input())
     for i in range(n):
         s=input().split(" ")
